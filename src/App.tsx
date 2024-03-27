@@ -1,10 +1,13 @@
+import Header from './assets/components'
 import { GlobalCss } from './styles'
 
 function App() {
   return (
     <>
       <GlobalCss />
-      <div>olá mundo</div>
+      <div>
+        <Header />
+      </div>
     </>
   )
 }
