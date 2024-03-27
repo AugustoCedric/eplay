@@ -11,10 +11,38 @@ const ProductsList = ({ background, title }: Props) => (
     <div className="container">
       <h2>{title}</h2>
       <List>
-        <Product />
-        <Product />
-        <Product />
-        <Product />
+        <Product
+          category="Ação"
+          description="teste"
+          image="//placehold.it/222x250"
+          infos={['R$ 150', '-10%']}
+          system="Windows"
+          title="Nome do jogo"
+        />
+        <Product
+          category="Ação"
+          description="teste"
+          image="//placehold.it/222x250"
+          infos={['R$ 150', '-10%']}
+          system="Windows"
+          title="Nome do jogo"
+        />
+        <Product
+          category="Ação"
+          description="teste"
+          image="//placehold.it/222x250"
+          infos={['R$ 150', '-10%']}
+          system="Windows"
+          title="Nome do jogo"
+        />
+        <Product
+          category="Ação"
+          description="teste"
+          image="//placehold.it/222x250"
+          infos={['R$ 150', '-10%']}
+          system="Windows"
+          title="Nome do jogo"
+        />
       </List>
     </div>
   </Container>
