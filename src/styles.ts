@@ -5,7 +5,8 @@ export const cores = {
   czClaro: '#EEE',
   preto: '#111',
   czEscuro: '#333',
-  verde: '#10AC84'
+  verde: '#10AC84',
+  czPrata: '#A3A3A3'
 }
 
 // Iniciando a estilização global do projeto

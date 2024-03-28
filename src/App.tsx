@@ -4,6 +4,7 @@ import Header from './assets/components/Header'
 import { GlobalCss } from './styles'
 
 // importando as rotas de navegação do site
+import Footer from './assets/components/Footer'
 import Rotas from './routes'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Header />
       </div>
       <Rotas />
+      <Footer />
     </BrowserRouter>
   )
 }
