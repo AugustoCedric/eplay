@@ -6,9 +6,9 @@ import { cores } from '../../../styles'
 export const ButtonContainer = styled.button<Props>`
   border: 2px solid
     ${(props) => (props.variant === 'primary' ? cores.verde : cores.czClaro)};
-  color: ${(props) =>
-    props.variant === 'primary' ? cores.verde : cores.czClaro};
-  background-color: transparent;
+  color: ${cores.czClaro};
+  background-color: ${(props) =>
+    props.variant === 'primary' ? cores.verde : 'transparent'};
   font-size: 16px;
   font-weight: bold;
   padding: 8px 16px;

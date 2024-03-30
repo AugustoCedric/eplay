@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { cores } from '../../../styles'
+import { TagContainer } from '../Tag/styles'
 
 export const Banner = styled.div`
   position: relative;
@@ -25,6 +26,10 @@ export const Banner = styled.div`
     content: '';
     /* agora vamos passar o Opacit conforme o projeto descrito no figma  */
     opacity: 0.56;
+  }
+
+  ${TagContainer} {
+    margin-right: 8px;
   }
   /* agora vamos adicionar uma regra no container para que fique visivel as Tags sobre o banner */
   .container {
