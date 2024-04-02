@@ -1,18 +1,18 @@
 import { useState } from 'react'
-import spiderman from '../../images/banner-homem-aranha.png'
-import fechar from '../../images/fechar.png'
-import hogwarts from '../../images/fundo_hogwarts.png'
-import play from '../../images/play.png'
-import zoom from '../../images/zoom.png'
+
+import { GalleryItem } from '../../../Pages/Home'
 import Section from '../Section'
+
 import { Action, Item, Items, Modal, ModalContent } from './styles'
 
-interface GallaryItem {
-  type: 'image' | 'video'
-  url: string
-}
+import spiderman from '../../images/banner-homem-aranha.png'
+import hogwarts from '../../images/fundo_hogwarts.png'
 
-const mock: GallaryItem[] = [
+import fechar from '../../images/fechar.png'
+import play from '../../images/play.png'
+import zoom from '../../images/zoom.png'
+
+const mock: GalleryItem[] = [
   {
     type: 'image',
     url: spiderman
@@ -32,7 +32,7 @@ type Props = {
   name: string
 }
 
-interface ModalState extends GallaryItem {
+interface ModalState extends GalleryItem {
   isVisible: boolean
 }
 
@@ -43,11 +43,11 @@ const Gallery = ({ defaultCover, name }: Props) => {
     url: ''
   })
 
-  const getMediaCover = (item: GallaryItem) => {
+  const getMediaCover = (item: GalleryItem) => {
     if (item.type === 'image') return item.url
     return defaultCover
   }
-  const getMediaIcon = (item: GallaryItem) => {
+  const getMediaIcon = (item: GalleryItem) => {
     if (item.type === 'image') return zoom
     return play
   }
