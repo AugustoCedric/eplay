@@ -1,6 +1,6 @@
 import Button from '../Button'
 
-import { close } from '../../../store/recucers/cart'
+import { close, remove } from '../../../store/recucers/cart'
 
 import { useDispatch, useSelector } from 'react-redux'
 import Tag from '../Tag'
@@ -31,6 +31,10 @@ const Cart = () => {
     }, 0)
   }
 
+  const removeItem = (id: string) => {
+    dispatch(remove(id))
+  }
+
   return (
     <CartContainer className={isOpen ? 'is-open' : ''}>
       <Overlay onClick={closeCart} />
@@ -45,7 +49,7 @@ const Cart = () => {
                 <Tag>{item.details.system}</Tag>
                 <span>{formataPreco(item.prices.current)}</span>
               </div>
-              <button type="button" />
+              <button onClick={() => removeItem(item.id)} type="button" />
             </CartItem>
           ))}
         </ul>
