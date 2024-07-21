@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { Game } from '../../../Pages/Home'
-import { add } from '../../../store/recucers/cart'
+import { add, open } from '../../../store/recucers/cart'
 import Button from '../Button'
 import { formataPreco } from '../ProductsList'
 import Tag from '../Tag'
@@ -14,6 +14,7 @@ const Hero = ({ game }: Props) => {
 
   const addToCart = () => {
     dispatch(add(game))
+    dispatch(open())
   }
   return (
     <Banner style={{ backgroundImage: `url(${game.media.cover})` }}>
