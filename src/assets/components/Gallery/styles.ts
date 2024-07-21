@@ -3,6 +3,8 @@ import { cores } from '../../../styles'
 
 export const Items = styled.ul`
   display: flex;
+  gap: 16px;
+  flex-wrap: wrap; //Comando para quebrar a linha
 `
 export const Action = styled.div`
   position: absolute;
@@ -17,7 +19,6 @@ export const Action = styled.div`
   opacity: 0;
 `
 export const Item = styled.li`
-  margin-right: 16px;
   position: relative;
 
   > img {
