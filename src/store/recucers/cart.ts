@@ -16,7 +16,13 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     add: (state, action: PayloadAction<Game>) => {
-      state.items.push(action.payload)
+      const game = state.items.find((item) => item.id === action.payload.id)
+
+      if (!game) {
+        state.items.push(action.payload)
+      } else {
+        alert('O jogo já está no carrinho')
+      }
     },
     open: (state) => {
       state.isOpen = true
