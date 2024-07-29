@@ -64,6 +64,7 @@ export const LinkItem = styled.li`
   }
 `
 export const CartButton = styled.a`
+  cursor: pointer;
   display: flex;
   img {
     margin-left: 16px;
@@ -83,6 +84,7 @@ export const Hamburguer = styled.div`
     width: 100%;
     background-color: ${cores.branco};
     margin-bottom: 4px;
+    cursor: pointer;
   }
 
   @media (min-width: ${breakpoints.tablet}) {
