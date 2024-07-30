@@ -11,6 +11,7 @@ export const Card = styled(Link)`
   text-decoration: -moz-focus-inner;
   color: ${cores.branco};
   display: block;
+  height: 100%;
 
   img {
     display: block;
