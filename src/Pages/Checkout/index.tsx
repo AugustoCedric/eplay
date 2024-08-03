@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Button from '../../assets/components/Button'
 import Card from '../../assets/components/Card'
 import * as S from './styles'
@@ -13,11 +13,21 @@ import { usePurchaseMutation } from '../../services/api'
 import { RootReducer } from '../../store'
 
 import { Navigate } from 'react-router-dom'
+import { getTotalPrice, parseToBrl } from '../../utils'
+
+type Installment = {
+  quantity: number
+  amount: number
+  formattedAmount: string
+}
 
 const Checkout = () => {
   const [payWithCard, setPayWithCard] = useState(false)
   const [purchase, { data, isSuccess }] = usePurchaseMutation()
   const { items } = useSelector((state: RootReducer) => state.cart)
+  const [installments, setInstallments] = useState<Installment[]>([])
+
+  const totalPrice = getTotalPrice(items)
 
   const form = useFormik({
     initialValues: {
@@ -135,6 +145,23 @@ const Checkout = () => {
 
     return hasError
   }
+
+  useEffect(() => {
+    const calculateInstallments = () => {
+      const installmentsArray: Installment[] = []
+      for (let i = 1; i <= 6; i++) {
+        installmentsArray.push({
+          quantity: i,
+          amount: totalPrice / i,
+          formattedAmount: parseToBrl(totalPrice / i)
+        })
+      }
+      return installmentsArray
+    }
+    if (totalPrice > 0) {
+      setInstallments(calculateInstallments())
+    }
+  }, [totalPrice])
 
   if (items.length === 0) {
     return <Navigate to="/" />
@@ -396,9 +423,12 @@ const Checkout = () => {
                             checkInputHasError('installments') ? 'error' : ''
                           }
                         >
-                          <option>1x de R$ 200,00</option>
-                          <option>2x de R$ 200,00</option>
-                          <option>3x de R$ 200,00</option>
+                          {installments.map((installment) => (
+                            <option key={installment.quantity}>
+                              {installment.quantity}x de{' '}
+                              {installment.formattedAmount}
+                            </option>
+                          ))}
                         </select>
                       </S.InputGroup>
                     </S.Row>
