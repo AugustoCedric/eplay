@@ -11,7 +11,7 @@ import * as S from './stayles'
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
   const dispatch = useDispatch()
-  const navigate = useNavigate() // Get the navigate function
+  const navigate = useNavigate()
 
   const closeCart = () => {
     dispatch(close())

@@ -7,11 +7,17 @@ import { useFormik } from 'formik'
 import barCode from '../../assets/images/barcode 1.png'
 import creditCard from '../../assets/images/credit-card 1.png'
 
+import { useSelector } from 'react-redux'
 import * as Yup from 'yup'
 import { usePurchaseMutation } from '../../services/api'
+import { RootReducer } from '../../store'
+
+import { Navigate } from 'react-router-dom'
+
 const Checkout = () => {
   const [payWithCard, setPayWithCard] = useState(false)
   const [purchase, { data, isSuccess }] = usePurchaseMutation()
+  const { items } = useSelector((state: RootReducer) => state.cart)
 
   const form = useFormik({
     initialValues: {
@@ -128,6 +134,10 @@ const Checkout = () => {
     const hasError = isTouched && isInvalid
 
     return hasError
+  }
+
+  if (items.length === 0) {
+    return <Navigate to="/" />
   }
 
   return (
