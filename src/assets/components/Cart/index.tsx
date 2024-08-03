@@ -1,31 +1,38 @@
-import Button from '../Button'
-
-import { close, remove } from '../../../store/recucers/cart'
-
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { RootReducer } from '../../../store'
+import { close, remove } from '../../../store/recucers/cart'
+import { parseToBrl } from '../../../utils'
+import Button from '../Button'
 import Tag from '../Tag'
 
-import { RootReducer } from '../../../store'
-import { parseToBrl } from '../../../utils'
 import * as S from './stayles'
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
   const dispatch = useDispatch()
+  const navigate = useNavigate() // Get the navigate function
 
   const closeCart = () => {
     dispatch(close())
   }
 
-  // Criar uma função para somar o totalizar
   const getTotalPrice = () => {
-    return items.reduce((acumulador, valorAtual) => {
-      return (acumulador += valorAtual.prices.current!)
+    return items.reduce((accumulator, currentItem) => {
+      if (currentItem.prices.current) {
+        return (accumulator += currentItem.prices.current)
+      }
+      return 0
     }, 0)
   }
 
   const removeItem = (id: string) => {
     dispatch(remove(id))
+  }
+
+  const goToCheckout = () => {
+    navigate('/checkout')
+    closeCart()
   }
 
   return (
@@ -51,8 +58,12 @@ const Cart = () => {
           Total de {parseToBrl(getTotalPrice())} <br />
           <span>Em até 6x sem juros </span>
         </S.Prices>
-        <Button title="Clique aqui para continuar com acrompra" type="button">
-          Continuar com Acompra
+        <Button
+          onClick={goToCheckout}
+          title="Clique aqui para continuar com a compra"
+          type="button"
+        >
+          Continuar com a Compra
         </Button>
       </S.Sidebar>
     </S.CartContainer>

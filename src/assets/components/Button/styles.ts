@@ -7,7 +7,7 @@ export const ButtonContainer = styled.button<Props>`
   border: 2px solid
     ${(props) =>
       props.variant === 'primary' ? colors.green : colors.lightGray};
-  color: ${colors.lightGray};
+  color: ${colors.white};
   background-color: ${(props) =>
     props.variant === 'primary' ? colors.green : 'transparent'};
   font-size: 16px;
@@ -18,7 +18,7 @@ export const ButtonContainer = styled.button<Props>`
 `
 export const ButtonLink = styled(Link)`
   border: 2px solid ${colors.lightGray};
-  color: ${colors.lightGray};
+  color: ${colors.white};
   background-color: transparent;
   font-size: 16px;
   font-weight: bold;
