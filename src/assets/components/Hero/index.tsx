@@ -1,5 +1,4 @@
 import { useDispatch } from 'react-redux'
-import { Game } from '../../../Pages/Home'
 import { add, open } from '../../../store/recucers/cart'
 import { parseToBrl } from '../../../utils'
 import Button from '../Button'
